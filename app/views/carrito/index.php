@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Carrito de Compra</title>
-    <link rel="stylesheet" href="http://localhost:8080/precio_uno_autoservicio/public/css/bootstrap.min.css">
+
+    <!-- ESTILOS -->
+    <link rel="stylesheet" href="<?= BASE_URL ?>public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>public/css/styles.css">
 </head>
 
 <body class="bg-light">
@@ -51,18 +54,19 @@
 
     <?php endif; ?>
 
-    <a href="http://localhost:8080/precio_uno_autoservicio/escaneo" class="btn btn-secondary mt-3">
+
+    <!-- BOTONES DEL CARRITO -->
+    <a href="<?= BASE_URL ?>escaneo" class="btn btn-secondary mt-3">
         Seguir Escaneando
     </a>
     
-    <a href="http://localhost:8080/precio_uno_autoservicio/carrito?vaciar=1" class="btn btn-danger mt-3">
+    <a href="<?= BASE_URL ?>carrito?vaciar=1" class="btn btn-danger mt-3">
         Vaciar Carrito
     </a>
 
-    <a href="http://localhost:8080/precio_uno_autoservicio/pago" class="btn btn-primary mt-3">
+    <a href="<?= BASE_URL ?>pago" class="btn btn-primary mt-3">
         Pagar
     </a>
-
 
 </div>
 

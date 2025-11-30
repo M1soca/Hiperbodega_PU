@@ -7,9 +7,11 @@ class EscaneoController extends Controller {
 
     public function index() {
 
+        // Iniciar sesión si no existe
         if (session_status() === PHP_SESSION_NONE) {
-        session_start();
+            session_start();
         }
+
         // Crear carrito si no existe
         if (!isset($_SESSION["carrito"])) {
             $_SESSION["carrito"] = [];
@@ -17,24 +19,31 @@ class EscaneoController extends Controller {
 
         $mensaje = "";
 
-        // Cuando escanean
-        if(isset($_POST["codigo"])) {
+        // Si se envió un código por POST
+        if (isset($_POST["codigo"])) {
 
             $codigo = trim($_POST["codigo"]);
+
+            // Buscar producto
             $productoModel = new Producto();
             $producto = $productoModel->buscarPorCodigo($codigo);
 
-            if($producto) {
+            if ($producto) {
 
-                // Revisar si ya existe en el carrito
+                // Verificar si ya está en el carrito
                 $encontrado = false;
 
-                for ($i = 0; $i < count($_SESSION["carrito"]); $i++) {
+                foreach ($_SESSION["carrito"] as $index => $item) {
 
-                    if ($_SESSION["carrito"][$i]["codigo"] == $codigo) {
-                        $_SESSION["carrito"][$i]["cantidad"]++;
-                        $_SESSION["carrito"][$i]["subtotal"] = 
-                            $_SESSION["carrito"][$i]["cantidad"] * $producto["precio"];
+                    if ($item["codigo"] == $codigo) {
+
+                        // Incrementar cantidad
+                        $_SESSION["carrito"][$index]["cantidad"]++;
+
+                        // Actualizar subtotal
+                        $_SESSION["carrito"][$index]["subtotal"] =
+                            $_SESSION["carrito"][$index]["cantidad"] * $producto["precio"];
+
                         $encontrado = true;
                         break;
                     }
@@ -51,14 +60,22 @@ class EscaneoController extends Controller {
                     ];
                 }
 
-                $mensaje = "Producto agregado: " . $producto["nombre"];
+                // Truncar nombre para evitar romper diseño
+                $nombre = strlen($producto["nombre"]) > 40
+                            ? substr($producto["nombre"], 0, 40) . "..."
+                            : $producto["nombre"];
+
+                // Mensaje estandarizado estilo retail
+                $mensaje = "Añadido al carrito: " . $nombre;
 
             } else {
-                $mensaje = "Producto NO encontrado";
+                // Mensaje estandarizado de error
+                $mensaje = "Código inválido";
             }
         }
 
-        View::render("escaneo/escanear", [
+        // Renderizar vista
+        View::render("escaneo/index", [
             "mensaje" => $mensaje
         ]);
     }

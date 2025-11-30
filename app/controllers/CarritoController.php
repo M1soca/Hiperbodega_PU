@@ -6,25 +6,24 @@ class CarritoController extends Controller {
 
     public function index() {
 
+        // Asegurar sesión activa
         if (session_status() === PHP_SESSION_NONE) {
-        session_start();
+            session_start();
         }
 
+        // Vaciar carrito si se solicita
         if (isset($_GET["vaciar"])) {
-            unset($_SESSION["carrito"]);
-            $_SESSION["carrito"] = [];
-            }
-        
-        if(!isset($_SESSION["carrito"])) {
             $_SESSION["carrito"] = [];
         }
 
-        // Enviar los productos a la vista
-        $data = [
+        // Inicializar carrito si no existe
+        if (!isset($_SESSION["carrito"])) {
+            $_SESSION["carrito"] = [];
+        }
+
+        // Datos enviados a la vista
+        View::render("carrito/index", [
             "productos" => $_SESSION["carrito"]
-        ];
-
-        View::render("carrito/index", $data);
-
+        ]);
     }
 }

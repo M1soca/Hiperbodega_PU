@@ -1,7 +1,7 @@
 RewriteEngine On
-RewriteBase /precio_uno_autoservicio/
+RewriteBase /Hiperbodega_PU/
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?url=$1 [L,QSA]
 
-RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]

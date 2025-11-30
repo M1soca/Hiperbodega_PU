@@ -1,0 +1,76 @@
+/* Botón institucional Precio Uno */
+.btn-precio-uno {
+    background-color: #d41c2c;   /* rojo institucional aproximado */
+    border-color: #d41c2c;
+    font-weight: 600;
+}
+
+.btn-precio-uno:hover {
+    background-color: #d41c2c ;
+    border-color: #d41c2c ;
+}
+
+.bg-precio-uno {
+    background-color: #d41c2c !important; /* rojo institucional */
+}
+
+
+.card {
+    box-shadow: 0 6px 35px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* Botón rojo institucional sobre fondo rojo */
+.btn-carrito {
+    background-color: #d71920 !important; /* rojo institucional */
+    border: 2px solid #ffffffaa !important; /* borde blanco suave */
+    color: #fff !important;
+    font-weight: 600;
+    padding: 12px 28px;
+    border-radius: 8px;
+
+    /* SOMBRA SUAVE Y PROFESIONAL */
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.25);
+
+    transition: 0.2s ease-in-out;
+    text-decoration: none !important;
+    display: inline-block;
+}
+
+.btn-carrito:hover {
+    background-color: #b1151b !important;
+    border-color: #ffffffdd !important;
+
+    /* SOMBRA UN POQUITO MÁS MARCADA, PERO NO EXAGERADA */
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.35);
+
+    color: #fff !important;
+}
+
+
+
+
+
+.pago-card {
+    width: 140px;
+    height: 140px;
+    border-radius: 15px;
+    background: #f8f9fa;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.pago-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
+
+.pago-icon {
+    width: 45px;
+    height: 45px;
+    margin-bottom: 10px;
+}
