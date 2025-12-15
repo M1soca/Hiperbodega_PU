@@ -47,30 +47,293 @@
 }
 
 
+/* ================================
+   FONDO INSTITUCIONAL
+================================ */
+.bg-precio-uno {
+    background: #d41c2c !important;
+}
+
+/* ================================
+   CARD PRINCIPAL DEL CARRITO
+================================ */
+.card-carrito {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    max-width: 900px;
+    width: 100%;
+}
+
+/* ================================
+   TABLA MODERNA
+================================ */
+/* TABLE */
+.table-modern table {
+    border-radius: 10px;
+    overflow: hidden;
+    background: #ffffff;
+}
+
+.table-modern thead {
+    background: #dfe8ff !important;
+}
+
+.table-modern thead th {
+    font-weight: 700;
+    color: #1a1a1a;
+    padding: 14px !important;
+    font-size: 15px;
+}
+
+.table-modern tbody tr {
+    transition: background 0.2s;
+}
+
+.table-modern tbody tr:hover {
+    background: #fff3db;
+}
+
+.table-modern td {
+    padding: 14px !important;
+    font-size: 15px;
+    color: #1f1f1f;
+}
+
+/* ================================
+   CAJA DE TOTAL
+================================ */
+.total-box {
+    background: #fff8f5;
+    border-left: 6px solid #7a0000;
+    padding: 20px;
+    font-size: 1.45rem;
+    border-radius: 10px;
+    font-weight: 700;
+    color: #5c0000;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.15);
+    max-width: 350px;
+    margin: 20px auto 0 auto;
+}
+
+/* ================================
+   BOTONES
+================================ */
+.btn-carrito-action {
+    padding: 12px 34px !important;
+    border-radius: 30px !important;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Gris */
+.btn-secondary {
+    background: #434343 !important;
+}
+.btn-secondary:hover {
+    background: #5c5c5c !important;
+}
+
+/* Rojo */
+.btn-danger {
+    background: #ad0000 !important;
+}
+.btn-danger:hover {
+    background: #d00000 !important;
+}
+
+/* Azul */
+.btn-primary {
+    background: #0066ff !important;
+}
+.btn-primary:hover {
+    background: #004fcc !important;
+}
 
 
+/* =========================================
+   MÓDULO PAGO – ESTILOS UX/UI
+========================================= */
 
+.bg-precio-uno {
+    background: #d41c2c !important;
+}
+
+/* CONTENEDOR PRINCIPAL DE PAGO */
+.card-pago-principal {
+    background: #ffffff;
+    padding: 55px;              /* antes era 40px */
+    border-radius: 22px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+    max-width: 750px;           /* un poquito más ancho */
+    width: 100%;
+    margin-top: 40px;           /* margen superior más suave */
+    margin-bottom: 40px;        /* margen inferior */
+}
+
+
+/* TÍTULO */
+.titulo-pago {
+    color: #000000 !important;
+    font-size: 2.4rem;
+    font-weight: 800;
+    text-shadow: none !important;
+}
+
+/* BOX TOTAL */
+.total-box-pago {
+    background: #f8f8f8;
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    width: 100%;
+    max-width: 380px;
+    margin: 0 auto;
+}
+
+/* MÉTODOS DE PAGO */
 .pago-card {
-    width: 140px;
-    height: 140px;
-    border-radius: 15px;
-    background: #f8f9fa;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    width: 160px;
+    height: 185px; /* altura fija para que queden iguales */
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
+    align-items: center;
+}
+
+.pago-card p {
+    margin: 0;
+    padding-top: 8px;
+    font-size: 0.95rem;
+}
+
+.pago-card img {
+    max-width: 70%;        /* evita que sobresalga */
 }
 
 .pago-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    transform: translateY(-6px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+}
+
+.active-card {
+    border: 3px solid #d41c2c;
+    transform: scale(1.02);
 }
 
 .pago-icon {
-    width: 45px;
-    height: 45px;
-    margin-bottom: 10px;
+    width: 80px;           /* tamaño controlado */
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 10px auto;
+}
+
+/* FORMULARIO INTERNO */
+.form-pago-contenedor {
+    margin-top: 25px;
+}
+
+.form-pago {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
+
+/* BOTONES */
+.btn-pago {
+    padding: 14px;
+    font-size: 1.1rem;
+    border-radius: 10px;
+}
+
+.qr-img {
+    width: 200px;
+}
+
+/* Espacio entre título, total y métodos */
+.card-pago-principal h1,
+.card-pago-principal h4,
+.total-box-pago {
+    margin-bottom: 28px !important;
+}
+
+
+
+/* PANEL PRINCIPAL DE BOLETA */
+/* CONTENEDOR PRINCIPAL DE LA BOLETA */
+.boleta-contenedor {
+    background: #ffffff;
+    width: 650px;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0px 15px 40px rgba(0,0,0,0.35);
+    margin-top: 40px;
+}
+
+/* TÍTULO */
+.boleta-titulo {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #222;
+}
+
+/* FECHA */
+.boleta-fecha {
+    font-size: 1rem;
+    color: #444;
+}
+
+/* TABLA */
+.tabla-boleta thead {
+    background: #efefef;
+    font-weight: bold;
+}
+
+.tabla-boleta td {
+    padding: 10px;
+    vertical-align: middle;
+}
+
+/* MÉTODO DE PAGO */
+.pago-card-boleta {
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 15px;
+    width: 180px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.20);
+    margin: 0 auto 20px auto;
+    text-align: center;
+}
+
+/* Imagen del método */
+.icono-boleta {
+    width: 75px;
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 8px;
+}
+
+/* Totales */
+.totales-boleta p {
+    font-size: 1.15rem;
+    margin-bottom: 6px;
+}
+
+/* Botón final */
+.btn-precio-uno {
+    background: #c61b24;
+    border: none;
+    border-radius: 10px;
+    padding: 14px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: white;
+}
+
+.btn-precio-uno:hover {
+    background: #9e141c;
 }

@@ -5,158 +5,118 @@
     <title>Pagar Compra</title>
 
     <link rel="stylesheet" href="<?= BASE_URL ?>public/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<?= BASE_URL ?>public/css/styles.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/public/css/styles.css">
 </head>
 
-<body class="bg-light">
+<body class="bg-precio-uno d-flex justify-content-center align-items-center min-vh-100">
 
-<div class="container mt-5" style="max-width: 500px;">
+<!-- ============================
+     PANEL BLANCO PRINCIPAL
+============================ -->
+<div class="card-pago-principal text-center">
 
-    <h2 class="text-center mb-4">Pagar Compra</h2>
+    <!-- TITULO -->
+    <h1 class="titulo-pago mb-4">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="#d41c2c" viewBox="0 0 16 16" class="me-2">
+            <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v1H0V4zm0 3h16v5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V7zm3.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm9 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/>
+        </svg>
+        Pagar Compra
+    </h1>
 
-    <!-- TARJETA DEL TOTAL -->
-    <div class="card p-4 shadow-sm mb-4">
+    <!-- TOTAL -->
+    <div class="total-box-pago mb-4 mx-auto">
+        <p class="fw-semibold text-dark mb-1">Total a pagar:</p>
+        <h1 class="text-success fw-bold display-5 m-0">S/ <?= number_format($total, 2) ?></h1>
+    </div>
 
-        <h4 class="mb-3">Total a pagar:</h4>
-        <h2 class="text-success mb-4">S/ <?= number_format($total, 2) ?></h2>
+    <!-- SUBTITULO -->
+    <h4 class="text-secondary fw-bold mb-4">Seleccione método de pago</h4>
 
-        <!-- -------------------------
-             FORM YAPE / PLIN
-        -------------------------- -->
-        <div id="form-yape" style="display:none;">
-            <h5 class="text-center mb-3">Paga con Yape o Plin</h5>
-            <p class="text-center">Escanea este código QR para pagar</p>
+    <!-- OPCIONES DE PAGO -->
+    <div class="d-flex justify-content-center gap-4 flex-wrap mb-4">
 
-            <img src="<?= BASE_URL ?>public/img/qr.png" 
-                 class="img-fluid mx-auto d-block"
-                 style="max-width:200px;">
+        <div class="pago-card" data-metodo="yape">
+            <img src="<?= BASE_URL ?>public/img/yape.png" class="pago-icon">
+            <p>Yape / Plin</p>
+        </div>
+
+        <div class="pago-card" data-metodo="debito">
+            <img src="<?= BASE_URL ?>public/img/debito.png" class="pago-icon">
+            <p>Tarjeta Débito</p>
+        </div>
+
+        <div class="pago-card" data-metodo="credito">
+            <img src="<?= BASE_URL ?>public/img/credito.png" class="pago-icon">
+            <p>Tarjeta Crédito</p>
+        </div>
+
+    </div>
+
+
+    <!-- AREA DE FORMULARIOS -->
+    <div class="form-pago-contenedor">
+
+        <!-- YAPE -->
+        <div id="form-yape" class="form-pago" style="display:none;">
+            <h5 class="fw-bold mb-3">Paga con Yape / Plin</h5>
+            <p>Escanea el siguiente QR:</p>
+
+            <img src="<?= BASE_URL ?>public/img/qr-code.png" class="qr-img mb-3">
 
             <form method="POST" action="<?= BASE_URL ?>pago">
                 <input type="hidden" name="metodo" value="yape">
-
-                <button class="btn btn-primary w-100 mt-4">
-                    Confirmar Pago
-                </button>
+                <button class="btn btn-primary w-100 btn-pago">Confirmar Pago</button>
             </form>
-
-            <a href="<?= BASE_URL ?>carrito" 
-               class="btn btn-secondary w-100 mt-3">
-               Volver al carrito
-            </a>
         </div>
 
-
-        <!-- -------------------------
-             FORM TARJETA DÉBITO
-        -------------------------- -->
-        <div id="form-debito" style="display:none;">
-            <h5 class="text-center mb-3">Tarjeta Débito</h5>
+        <!-- DEBITO -->
+        <div id="form-debito" class="form-pago" style="display:none;">
+            <h5 class="fw-bold mb-3">Tarjeta Débito</h5>
 
             <form method="POST" action="<?= BASE_URL ?>pago">
                 <input type="hidden" name="metodo" value="debito">
-
                 <input type="text" class="form-control mb-2" placeholder="Número de tarjeta" required>
                 <input type="text" class="form-control mb-2" placeholder="MM/AA" required>
                 <input type="password" class="form-control mb-3" placeholder="CVV" required>
 
-                <button class="btn btn-primary w-100">Confirmar Pago</button>
+                <button class="btn btn-primary w-100 btn-pago">Confirmar Pago</button>
             </form>
-
-            <a href="<?= BASE_URL ?>carrito" 
-               class="btn btn-secondary w-100 mt-3">
-               Volver al carrito
-            </a>
         </div>
 
-
-        <!-- -------------------------
-             FORM TARJETA CRÉDITO
-        -------------------------- -->
-        <div id="form-credito" style="display:none;">
-            <h5 class="text-center mb-3">Tarjeta Crédito</h5>
+        <!-- CREDITO -->
+        <div id="form-credito" class="form-pago" style="display:none;">
+            <h5 class="fw-bold mb-3">Tarjeta Crédito</h5>
 
             <form method="POST" action="<?= BASE_URL ?>pago">
                 <input type="hidden" name="metodo" value="credito">
-
                 <input type="text" class="form-control mb-2" placeholder="Número de tarjeta" required>
                 <input type="text" class="form-control mb-2" placeholder="MM/AA" required>
                 <input type="password" class="form-control mb-3" placeholder="CVV" required>
 
-                <button class="btn btn-primary w-100">Confirmar Pago</button>
+                <button class="btn btn-primary w-100 btn-pago">Confirmar Pago</button>
             </form>
-
-            <a href="<?= BASE_URL ?>carrito" 
-               class="btn btn-secondary w-100 mt-3">
-               Volver al carrito
-            </a>
         </div>
-
-    </div>
-</div>
-
-<!-- -------------------------
-     SELECTOR DE MÉTODOS
--------------------------- -->
-
-<h4 class="text-center mb-4">Seleccione método de pago</h4>
-
-<div class="d-flex justify-content-center gap-4 mb-5">
-
-    <!-- YAPE / PLIN -->
-    <div class="pago-card" data-metodo="yape">
-        <img src="<?= BASE_URL ?>public/img/yape.png" alt="Yape" class="pago-icon">
-        <p>Yape / Plin</p>
-    </div>
-
-    <!-- TARJETA DÉBITO -->
-    <div class="pago-card" data-metodo="debito">
-        <img src="<?= BASE_URL ?>public/img/debitp.png" alt="Débito" class="pago-icon">
-        <p>Tarjeta Débito</p>
-    </div>
-
-    <!-- TARJETA CRÉDITO -->
-    <div class="pago-card" data-metodo="credito">
-        <img src="<?= BASE_URL ?>public/img/credito.png" alt="Crédito" class="pago-icon">
-        <p>Tarjeta Crédito</p>
     </div>
 
 </div>
 
-
-<!-- -------------------------
-     SCRIPT (FUNCIONAL)
--------------------------- -->
-
+<!-- SCRIPT -->
 <script>
     const cards = document.querySelectorAll(".pago-card");
+    const forms = {
+        yape: document.getElementById("form-yape"),
+        debito: document.getElementById("form-debito"),
+        credito: document.getElementById("form-credito")
+    };
 
-    const formYape = document.getElementById("form-yape");
-    const formDebito = document.getElementById("form-debito");
-    const formCredito = document.getElementById("form-credito");
-
-    // Ocultamos todo al inicio
-    formYape.style.display = "none";
-    formDebito.style.display = "none";
-    formCredito.style.display = "none";
-
-    // Evento del clic
     cards.forEach(card => {
         card.addEventListener("click", () => {
-
             const metodo = card.getAttribute("data-metodo");
 
-            // Ocultar todo
-            formYape.style.display = "none";
-            formDebito.style.display = "none";
-            formCredito.style.display = "none";
-
-            // Mostrar según método
-            if (metodo === "yape") formYape.style.display = "block";
-            if (metodo === "debito") formDebito.style.display = "block";
-            if (metodo === "credito") formCredito.style.display = "block";
-
-            // Visual
+            Object.values(forms).forEach(f => f.style.display = "none");
             cards.forEach(c => c.classList.remove("active-card"));
+
+            forms[metodo].style.display = "block";
             card.classList.add("active-card");
         });
     });
