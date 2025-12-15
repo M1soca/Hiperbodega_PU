@@ -48,3 +48,14 @@ El proyecto fue desarrollado aplicando conceptos de **ingeniería de software**,
 
 ## 📂 Estructura del proyecto
 
+/app
+ ├── controllers
+ ├── models
+ ├── views
+/config
+/public
+/database
+.htaccess
+index.php
+README.md
+
